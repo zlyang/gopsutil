@@ -3,7 +3,7 @@
 package cpu
 
 import (
-	"fmt"
+	// "fmt"
 	"syscall"
 	"time"
 	"unsafe"
@@ -14,8 +14,8 @@ import (
 )
 
 type Win32_Processor struct {
-	LoadPercentage            *uint16
-	Family                    uint16
+	LoadPercentage *uint16
+	// Family                    uint16 // fixed wmi: cannot load field "Family" into a "uint16": unsupported type (<nil>)
 	Manufacturer              string
 	Name                      string
 	NumberOfLogicalProcessors uint32
@@ -71,8 +71,8 @@ func Info() ([]InfoStat, error) {
 		}
 
 		cpu := InfoStat{
-			CPU:        int32(i),
-			Family:     fmt.Sprintf("%d", l.Family),
+			CPU: int32(i),
+			// Family:     fmt.Sprintf("%d", l.Family),
 			VendorID:   l.Manufacturer,
 			ModelName:  l.Name,
 			Cores:      int32(l.NumberOfLogicalProcessors),
